@@ -1,1 +1,1 @@
-这是学习sunShine的第一阶段，第一个备份，里面有udacity视频课程前三课视频的代码
+到第四课A了，使用了ContentProvider，先加保存到数据库，然后在展示
