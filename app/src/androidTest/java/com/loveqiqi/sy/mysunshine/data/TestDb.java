@@ -152,6 +152,7 @@ public class TestDb extends AndroidTestCase {
         // the weather. Make sure to cover as many failure cases as you can.
         WeatherDbHelper dbHelper = new WeatherDbHelper(this.mContext);
         SQLiteDatabase db = dbHelper.getWritableDatabase();
+
         long locationRowId = insertLocation(db);
 
         // Instead of rewriting all of the code we've already written in testLocationTable
