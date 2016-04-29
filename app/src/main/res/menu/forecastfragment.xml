@@ -5,12 +5,4 @@
      android:title="@string/fresh"
      syapp:showAsAction="never"
     ></item>
-
-    <item android:id="@+id/action_set"
-        android:title="@string/action_settings"
-        syapp:showAsAction="never"
-        ></item>
-    <item android:id="@+id/action_map"
-        android:title="@string/action_map"
-        syapp:showAsAction="never"></item>
 </menu>

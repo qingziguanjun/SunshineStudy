@@ -10,7 +10,8 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"
+            android:theme="@style/ForecastTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -28,6 +29,7 @@
         </activity>
         <activity android:name=".SettingsActivity"
             android:label="@string/action_settings"
+            android:theme="@style/SettingsTheme"
             android:parentActivityName=".MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -36,7 +38,17 @@
 
         <provider
             android:authorities="com.loveqiqi.sy.mysunshine"
-            android:name=".data.WeatherProvider"/>
+            android:name=".data.WeatherProvider"
+            android:enabled="true"
+            android:exported="true"
+            android:permission="com.myapp.LICENSE_TO_KILL"/>
+
     </application>
+    <permission
+        android:name="com.myapp.LICENSE_TO_KILL"
+        android:protectionLevel="dangerous"
+        android:label="Licenced to kill">
+
+    </permission>
 
 </manifest>

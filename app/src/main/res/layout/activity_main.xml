@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<fragment xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/container"
-    tools:ignore="MergeRootFrame"
+    android:id="@+id/fragment_forecast"
+    android:name="com.loveqiqi.sy.mysunshine.ForecastFragment"
+    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+    android:layout_marginRight="@dimen/activity_horizontal_margin"
     tools:context="com.loveqiqi.sy.mysunshine.MainActivity"
+    tools:layout="@android:layout/list_content"
     >
 
-</FrameLayout>
+</fragment>
