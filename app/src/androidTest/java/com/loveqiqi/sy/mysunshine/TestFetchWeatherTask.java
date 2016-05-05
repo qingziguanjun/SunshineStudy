@@ -15,11 +15,7 @@
  */
 package com.loveqiqi.sy.mysunshine;
 
-import android.annotation.TargetApi;
-import android.database.Cursor;
 import android.test.AndroidTestCase;
-
-import com.loveqiqi.sy.mysunshine.data.WeatherContract;
 
 public class TestFetchWeatherTask extends AndroidTestCase{
     static final String ADD_LOCATION_SETTING = "Sunnydale, CA";
@@ -31,7 +27,7 @@ public class TestFetchWeatherTask extends AndroidTestCase{
         Students: uncomment testAddLocation after you have written the AddLocation function.
         This test will only run on API level 11 and higher because of a requirement in the
         content provider.
-     */
+
     @TargetApi(11)
     public void testAddLocation() {
         // start from a clean state
@@ -101,4 +97,5 @@ public class TestFetchWeatherTask extends AndroidTestCase{
                 acquireContentProviderClient(WeatherContract.LocationEntry.CONTENT_URI).
                 getLocalContentProvider().shutdown();
     }
+    */
 }

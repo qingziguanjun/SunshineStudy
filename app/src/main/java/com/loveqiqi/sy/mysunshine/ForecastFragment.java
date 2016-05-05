@@ -2,6 +2,7 @@ package com.loveqiqi.sy.mysunshine;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.net.Uri;
@@ -12,6 +13,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -22,6 +24,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.loveqiqi.sy.mysunshine.data.WeatherContract;
+import com.loveqiqi.sy.mysunshine.sync.SunshineSyncAdapter;
 
 /**
  * Created by sy on 2016/4/17.
@@ -188,9 +191,37 @@ public class ForecastFragment extends Fragment implements LoaderManager.LoaderCa
             updateWeather();
             return true;
         }
+        if (id == R.id.action_map) {
+            openPreferredLocationInMap();
+            return true;
+        }
         return super.onOptionsItemSelected(item);
     }
 
+    private void openPreferredLocationInMap() {
+        // Using the URI scheme for showing a location found on a map.  This super-handy
+        // intent can is detailed in the "Common Intents" page of Android's developer site:
+        // http://developer.android.com/guide/components/intents-common.html#Maps
+        if(null != mForecastAdapter){
+            Cursor c = mForecastAdapter.getCursor();
+            if(null != c){
+                c.moveToPosition(0);
+                String posLat = c.getString(COL_COORD_LAT);
+                String posLong = c.getString(COL_COORD_LONG);
+                Uri geoLocation = Uri.parse("geo:" + posLat + "," + posLong);
+
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.setData(geoLocation);
+                if(intent.resolveActivity(getActivity().getPackageManager()) != null){
+                    startActivity(intent);
+                }else{
+                    Log.d("ERROR","Couldn't call " + geoLocation.toString() + ", no receiving apps installed!");
+                }
+
+            }
+        }
+
+    }
 
 
     public void onLocationChanged(){
@@ -199,11 +230,22 @@ public class ForecastFragment extends Fragment implements LoaderManager.LoaderCa
     }
 
     private void updateWeather() {
-        FetchWeatherTask weatherTask = new FetchWeatherTask(getActivity());
+      // FetchWeatherTask weatherTask = new FetchWeatherTask(getActivity());
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
         String location = prefs.getString(getString(R.string.pref_location_key),
                 getString(R.string.pref_location_default));
-        weatherTask.execute(location);
+//        Intent intent = new Intent(getActivity(), SunShineService.class);
+//        intent.putExtra(SunShineService.LOCATION_QUERY_EXTRA, location);
+//        getActivity().startService(intent);
+/*
+        Intent alarmIntent = new Intent(getActivity(), SunShineService.AlarmReceiver.class);
+        alarmIntent.putExtra(SunShineService.LOCATION_QUERY_EXTRA, location);
+        PendingIntent pi = PendingIntent.getBroadcast(getActivity(), 0, alarmIntent, PendingIntent.FLAG_ONE_SHOT);
+        AlarmManager am = (AlarmManager)getActivity().getSystemService(Context.ALARM_SERVICE);
+        am.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + 5000, pi);
+*/
+
+       SunshineSyncAdapter.syncImmediately(getActivity());
     }
 //    @Override
 //    public void onStart() {

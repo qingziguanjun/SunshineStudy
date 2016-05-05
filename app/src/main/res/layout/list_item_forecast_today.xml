@@ -6,64 +6,60 @@
 
     android:background="@color/sunshine_blue">
     <LinearLayout
-        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:orientation="vertical"
-        android:gravity="center_horizontal"
-        android:paddingLeft="@dimen/sixty"
-        android:paddingTop="@dimen/activity_horizontal_margin">
+        android:layout_width="0dp"
+        android:layout_weight="7"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginLeft="60dp"
+        android:orientation="vertical">
+
         <TextView
             android:id="@+id/list_item_date_textview"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textAppearance="?android:textAppearanceLarge"
             android:fontFamily="sans-serif-condensed"
-            android:textSize="22sp"
-            android:textColor="@color/white"
-            android:text="Tommorrow"/>
+            android:textColor="@color/white" />
+
         <TextView
             android:id="@+id/list_item_high_textview"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="60sp"
-            android:textColor="@color/white"
-            android:text="21"/>
+            android:textSize="72sp"
+            android:fontFamily="sans-serif-light"
+            android:textColor="@color/white" />
+
         <TextView
             android:id="@+id/list_item_low_textview"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="36sp"
             android:textColor="@color/white"
-            android:text="8"/>
+            android:textSize="36sp"
+            android:layout_marginLeft="8dp"/>
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="0dp"
-        android:layout_weight="1"
         android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_weight="5"
+        android:layout_marginRight="16dp"
         android:orientation="vertical"
-        android:gravity="center_horizontal"
-        android:padding="16dp">
+        android:gravity="center_horizontal|bottom">
 
-        <FrameLayout
-            android:layout_width="100dp"
-            android:layout_height="100dp">
-            <ImageView
-                android:id="@+id/list_item_icon"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_gravity="center_horizontal"
-                />
-        </FrameLayout>
+        <ImageView
+            android:id="@+id/list_item_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"/>
 
         <TextView
             android:id="@+id/list_item_forecast_textview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="22sp"
-            android:textColor="@color/white"
-            android:text="Clear"/>
-
+            android:fontFamily="sans-serif-condensed"
+            android:layout_gravity="center_horizontal"
+            android:textAppearance="?android:textAppearanceLarge"
+            android:textColor="@color/white"/>
     </LinearLayout>
-
 </LinearLayout>

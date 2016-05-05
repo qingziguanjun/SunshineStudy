@@ -4,5 +4,10 @@
  <item android:id="@+id/action_fresh"
      android:title="@string/fresh"
      syapp:showAsAction="never"
-    ></item>
+    >
+
+ </item>
+    <item android:id="@+id/action_map"
+        android:title="@string/action_map"
+        syapp:showAsAction="never" />
 </menu>

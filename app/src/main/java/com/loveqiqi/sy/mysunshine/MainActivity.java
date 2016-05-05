@@ -9,6 +9,8 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.loveqiqi.sy.mysunshine.sync.SunshineSyncAdapter;
+
 
 public class MainActivity extends AppCompatActivity implements ForecastFragment.NotifyCallback{
     private String mLocation;
@@ -33,6 +35,8 @@ public class MainActivity extends AppCompatActivity implements ForecastFragment.
                 .findFragmentById(R.id.fragment_forecast);
         forecastFragment.setUseTodayLayout(!mTwoPane);
 
+        SunshineSyncAdapter.initializeSyncAdapter(this);
+
     }
 
 
@@ -56,10 +60,10 @@ public class MainActivity extends AppCompatActivity implements ForecastFragment.
             return true;
         }
 
-        if (id == R.id.action_map) {
-            openPreferredLocationInMap();
-            return true;
-        }
+//        if (id == R.id.action_map) {
+//            openPreferredLocationInMap();
+//            return true;
+//        }
         return super.onOptionsItemSelected(item);
     }
 
